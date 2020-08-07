@@ -1,21 +1,23 @@
 package by.itacademy;
 
+import java.math.BigDecimal;
+
 public class SimpleCalc {
 
-  public double sum(double a, double b) {
-    return a + b;
+  public BigDecimal sum(BigDecimal a, BigDecimal b) {
+    return a.add(b);
   }
 
-  public double minus(double a, double b) {
-    return a - b;
+  public BigDecimal minus(BigDecimal a, BigDecimal b) {
+    return a.add(b.negate());
   }
 
-  public double mul(double a, double b) {
-    return a * b;
+  public BigDecimal mul(BigDecimal a, BigDecimal b) {
+    return a.multiply(b);
   }
 
-  public double div(double a, double b) {
-    return a / b;
+  public BigDecimal div(BigDecimal a, BigDecimal b) {
+    return a.divide(b);
   }
 
 }
