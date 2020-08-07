@@ -1,6 +1,7 @@
 package by.itacademy;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,12 @@ public class FirstServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    double firstNum, secondNum;
-    Double result = null;
+    BigDecimal firstNum, secondNum, result = null;
     String operation;
 
     try {
-      firstNum = Double.parseDouble(request.getParameter("firstNum"));
-      secondNum = Double.parseDouble(request.getParameter("secondNum"));
+      firstNum = new BigDecimal(request.getParameter("firstNum"));
+      secondNum = new BigDecimal(request.getParameter("secondNum"));
       operation = request.getParameter("operation");
 
       SimpleCalc calc = new SimpleCalc();
@@ -47,7 +47,7 @@ public class FirstServlet extends HttpServlet {
 
       if (result != null) {
         response.getWriter()
-            .println(firstNum + " " + " " + operation + " " + " " + secondNum + " = " + result);
+            .println(firstNum + " " + operation + " " + secondNum + " = " + result);
       } else {
         response.setCharacterEncoding("windows-1251");
         response.getWriter().println("Не удалось вычислить");
