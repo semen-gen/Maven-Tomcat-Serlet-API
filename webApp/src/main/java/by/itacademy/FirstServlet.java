@@ -2,6 +2,8 @@ package by.itacademy;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,9 @@ public class FirstServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
+    ServletContext context = getServletContext();
+    RequestDispatcher dispatcher = context.getRequestDispatcher("/second");
+    dispatcher.forward(request, response);
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,7 +58,7 @@ public class FirstServlet extends HttpServlet {
       }
 
     } catch (Exception e) {
-      System.out.println("Error of parameters: " + e.getMessage());
+      response.getWriter().println("Error of parameters: " + e.getMessage());
     }
   }
 }
